@@ -1,7 +1,6 @@
-import config from "config";
-import mongoose from "mongoose";
+import mongoose from 'mongoose';
 
-const dbUrl = config.get<string>("mongoUrl");
+const dbUrl = process.env.MONGO_URL;
 
 const connectDB = async () => {
   try {
