@@ -4,7 +4,7 @@ const stateProject = process.env.STATE;
 
 export default {
   port: 5000,
-  accesTokenExpiresIn: 15,
+  accessTokenExpiresIn: 15,
   origin: "http://localhost:3000",
   mongoUrl: process.env.MONGO_URL,
   url:
