@@ -1,4 +1,3 @@
-import config from 'config';
 import {
   CookieOptions,
   NextFunction,
@@ -18,9 +17,9 @@ export const excludedFields = ["password"];
 //configuração de opções de token
 const accesTokenCookieOptions: CookieOptions = {
   expires: new Date(
-    Date.now() + config.get<number>("accessTokenExpiresIn") * 60 * 1000
+    Date.now() + /*config.get<number>("accessTokenExpiresIn")*/ 30 * 60 * 1000
   ),
-  maxAge: config.get<number>("accessTokenExpiresIn") * 60 * 1000,
+  maxAge: /*config.get<number>("accessTokenExpiresIn")*/ 30 * 60 * 1000,
   httpOnly: true,
   sameSite: "lax",
 };
