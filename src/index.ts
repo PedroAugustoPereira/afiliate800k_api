@@ -1,4 +1,3 @@
-import config from 'config';
 import cookieParser from 'cookie-parser';
 import cors from 'cors';
 import dotenv from 'dotenv';
@@ -75,7 +74,7 @@ app.use(
   }
 );
 
-const port = config.get<number>("port") || 5000;
+const port = /*config.get<number>("port") ||*/ 5000;
 
 app.listen(port, () => {
   console.log("Server listening on port " + port);
