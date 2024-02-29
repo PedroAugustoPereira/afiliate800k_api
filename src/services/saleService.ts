@@ -1,14 +1,12 @@
-import config from "config";
-
-import Products from "../models/productModel";
-import RefAffiliate from "../models/refAfiliateModel";
-import Sales from "../models/saleModel";
-import Users from "../models/userModel";
+import Products from '../models/productModel';
+import RefAffiliate from '../models/refAfiliateModel';
+import Sales from '../models/saleModel';
+import Users from '../models/userModel';
 
 const saleService = {
   createSale: async (ref: string, secret: string) => {
     const refAfiliate = await RefAffiliate.findOne({ ref });
-    const realSecret = config.get<string>("secretRef");
+    const realSecret = /*config.get<string>("secretRef")*/ process.env.SECRETREF;
 
     if (secret !== realSecret) {
       throw new Error("Segredo inválido");

@@ -18,7 +18,7 @@ dotenv.config();
 console.log(process.env.MONGO_URL);
 
 const corstOptions = {
-  origin: config.get<string>("url"),
+  origin: /* config.get<string>("url")*/"http://localhost:3000",
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type,X-Requested-With,Authorization",

@@ -1,11 +1,17 @@
-import config from "config";
-import { omit } from "lodash";
-import { FilterQuery, QueryOptions } from "mongoose";
+import { omit } from 'lodash';
+import {
+  FilterQuery,
+  QueryOptions,
+} from 'mongoose';
 
-import { excludedFields } from "../controllers/authController";
-import { signJwt } from "../middlewares/jwt";
-import Products from "../models/productModel";
-import Users, { UserDocument, UserType, userUpdate } from "../models/userModel";
+import { excludedFields } from '../controllers/authController';
+import { signJwt } from '../middlewares/jwt';
+import Products from '../models/productModel';
+import Users, {
+  UserDocument,
+  UserType,
+  userUpdate,
+} from '../models/userModel';
 
 const userService = {
   //verificação de email exist
@@ -72,7 +78,7 @@ const userService = {
     const access_token = signJwt(
       { sub: user._id }, // usamos como base do token o id do usuario, bem como
       {
-        expiresIn: `${config.get<number>("accesTokenExpiresIn")}m`, //setamos o tempo de expiração do token em minutios
+        expiresIn: `${/*config.get<number>("accesTokenExpiresIn")*/30}m`, //setamos o tempo de expiração do token em minutios
       }
     );
 
