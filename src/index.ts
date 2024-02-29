@@ -17,7 +17,7 @@ dotenv.config();
 console.log(process.env.MONGO_URL);
 
 const corstOptions = {
-  origin: /* config.get<string>("url")*/"http://localhost:3000",
+  origin: /* config.get<string>("url")*/"https://afiliate800k-client-ko2xfrpmk-pedros-projects-7b4fe0ce.vercel.app",
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type,X-Requested-With,Authorization",
@@ -39,6 +39,7 @@ app.use("/api/sale", saleRouter);
 app.all(
   "*",
   (req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.log()
     const err = new Error("Route not found") as any;
     err.statusCode = 404;
     next(err);
