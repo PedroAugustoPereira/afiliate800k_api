@@ -1,19 +1,21 @@
-import config from "config";
-import cookieParser from "cookie-parser";
-import cors from "cors";
-import dotenv from "dotenv";
-import express from "express";
-import path from "path";
+import config from 'config';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import dotenv from 'dotenv';
+import express from 'express';
+import path from 'path';
 
-import authRoute from "./routes/authRoute";
-import featuredProductRouter from "./routes/featuredProductRoute";
-import productRouter from "./routes/productRoute";
-import saleRouter from "./routes/saleRoute";
-import userRouter from "./routes/userRoute";
-import connectDB from "./utils/connecDb";
+import authRoute from './routes/authRoute';
+import featuredProductRouter from './routes/featuredProductRoute';
+import productRouter from './routes/productRoute';
+import saleRouter from './routes/saleRoute';
+import userRouter from './routes/userRoute';
+import connectDB from './utils/connecDb';
 
 const app = express(); //incialização do express
 dotenv.config();
+
+console.log(process.env.MONGO_URL);
 
 const corstOptions = {
   origin: config.get<string>("url"),
@@ -73,7 +75,7 @@ app.use(
   }
 );
 
-const port = config.get<number>("port");
+const port = config.get<number>("port") || 5000;
 
 app.listen(port, () => {
   console.log("Server listening on port " + port);
