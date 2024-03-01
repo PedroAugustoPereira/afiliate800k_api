@@ -30,7 +30,8 @@ const authController = {
     res: Response,
     next: NextFunction
   ) => {
-    console.log("teste aquui");
+    console.log("teste aquui"); //dfg
+
     const { email, password, role } = req.body;
 
     try {
