@@ -1,26 +1,28 @@
-import cookieParser from 'cookie-parser';
-import cors from 'cors';
-import dotenv from 'dotenv';
-import express from 'express';
-import path from 'path';
+import cookieParser from "cookie-parser";
+import cors, { CorsOptions } from "cors";
+import { config } from "dotenv";
+import express from "express";
+import path from "path";
 
-import authRoute from './routes/authRoute';
-import featuredProductRouter from './routes/featuredProductRoute';
-import productRouter from './routes/productRoute';
-import saleRouter from './routes/saleRoute';
-import userRouter from './routes/userRoute';
-import connectDB from './utils/connecDb';
+import authRoute from "./routes/authRoute";
+import featuredProductRouter from "./routes/featuredProductRoute";
+import productRouter from "./routes/productRoute";
+import saleRouter from "./routes/saleRoute";
+import userRouter from "./routes/userRoute";
+import connectDB from "./utils/connecDb";
 
 const app = express(); //incialização do express
-dotenv.config();
+config();
 
-
-const corsOptions = {
-  origin: function (origin: string, callback: (err: Error | null, allow?: boolean) => void) {
-    if (origin.startsWith('https://afiliate800k-client.vercel.app')) {
-      callback(null, true)
+const corsOptions: CorsOptions = {
+  origin: function (
+    origin: string | undefined,
+    callback: (err: Error | null, allow?: boolean) => void
+  ) {
+    if (origin && origin.startsWith("https://afiliate800k-client.vercel.app")) {
+      callback(null, true);
     } else {
-      callback(new Error('Not allowed by CORS'))
+      callback(new Error("Not allowed by CORS"));
     }
   },
   credentials: true,
@@ -44,7 +46,7 @@ app.use("/api/sale", saleRouter);
 app.all(
   "*",
   (req: express.Request, res: express.Response, next: express.NextFunction) => {
-    console.log()
+    console.log();
     const err = new Error("Route not found") as any;
     err.statusCode = 404;
     next(err);
@@ -82,7 +84,7 @@ app.use(
 
 const port = /*config.get<number>("port") ||*/ 5000;
 
-app.listen(port, () => {
+app.listen(port, async () => {
   console.log("Server listening on port " + port);
-  connectDB();
+  await connectDB();
 });

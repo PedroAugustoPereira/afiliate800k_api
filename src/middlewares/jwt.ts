@@ -1,4 +1,4 @@
-import jwt, { SignOptions } from 'jsonwebtoken';
+import jwt, { SignOptions } from "jsonwebtoken";
 
 //payload são os dados passados e optiions como nome diz são opções adicionais
 export const signJwt = (payload: Object, options: SignOptions = {}) => {
@@ -6,7 +6,7 @@ export const signJwt = (payload: Object, options: SignOptions = {}) => {
 
   const privateKey = Buffer.from(
     /*config.get<string>("accessTokenPrivateKey"),*/
-    process.env.ACCESS_TOKEN_PRIVATE_KEY,
+    process.env.ACCESS_TOKEN_PRIVATE_KEY || "null",
     "base64"
   ).toString("ascii");
 
@@ -21,7 +21,8 @@ export const verifyJwt = <T>(token: string): T | null => {
   //esécificamos o timo de retorno de quem está chamando a função
   try {
     //pegamos a chave publica
-    const publicKey = Buffer.from(process.env.ACCESS_TOKEN_PRIVATE_KEY,
+    const publicKey = Buffer.from(
+      process.env.ACCESS_TOKEN_PRIVATE_KEY || "null",
       // config.get<string>("accessTokenPublicKey"),
       "base64"
     ).toString("ascii");
