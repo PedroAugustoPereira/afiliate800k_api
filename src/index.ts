@@ -19,7 +19,12 @@ const corsOptions: CorsOptions = {
     origin: string | undefined,
     callback: (err: Error | null, allow?: boolean) => void
   ) {
-    if (origin && origin.startsWith("https://afiliate800k-client.vercel.app")) {
+    if (
+      origin &&
+      origin.startsWith(
+        "https://65e161da812d20000878ea96--profound-kataifi-86bea6.netlify.app/"
+      )
+    ) {
       callback(null, true);
     } else {
       callback(new Error("Not allowed by CORS"));
