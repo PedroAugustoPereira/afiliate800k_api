@@ -16,7 +16,7 @@ dotenv.config();
 
 
 const corstOptions = {
-  origin: /* config.get<string>("url")*/"https://afiliate800k-client-ko2xfrpmk-pedros-projects-7b4fe0ce.vercel.app",
+  origin: /* config.get<string>("url")*/"https://afiliate800k-api.vercel.app/api/",
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type,X-Requested-With,Authorization",
