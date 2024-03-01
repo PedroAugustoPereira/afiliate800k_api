@@ -14,7 +14,6 @@ import connectDB from './utils/connecDb';
 const app = express(); //incialização do express
 dotenv.config();
 
-console.log(process.env.MONGO_URL);
 
 const corstOptions = {
   origin: /* config.get<string>("url")*/"https://afiliate800k-client-ko2xfrpmk-pedros-projects-7b4fe0ce.vercel.app",
