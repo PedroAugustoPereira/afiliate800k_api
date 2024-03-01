@@ -3,7 +3,7 @@ import Products from "../models/productModel";
 
 const featuredProductsService = {
   create: async (productId: string, imageFeatured: string) => {
-    const product = await Products.findById({ productId });
+    const product = await Products.findById(productId);
 
     if (!product) {
       throw new Error("Produto inválido");
