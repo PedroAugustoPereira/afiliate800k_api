@@ -15,14 +15,20 @@ const app = express(); //incialização do express
 dotenv.config();
 
 
-const corstOptions = {
-  origin: true, // permite qualquer domínio
+const corsOptions = {
+  origin: function (origin: string, callback: (err: Error | null, allow?: boolean) => void) {
+    if (origin.startsWith('https://afiliate800k-client.vercel.app')) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
   credentials: true,
   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
   allowedHeaders: "Content-Type,X-Requested-With,Authorization",
 };
 
-app.use(cors(corstOptions)); //configuração do cors
+app.use(cors(corsOptions)); //configuração do cors
 app.use(express.json()); //configuração de json
 app.use(cookieParser()); //configuração de cookies
 
