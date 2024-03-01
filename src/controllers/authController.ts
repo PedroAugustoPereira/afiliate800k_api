@@ -1,15 +1,7 @@
-import {
-  CookieOptions,
-  NextFunction,
-  Request,
-  Response,
-} from 'express';
+import { CookieOptions, NextFunction, Request, Response } from "express";
 
-import {
-  CreateUserInput,
-  LoginUserInput,
-} from '../schema/user.schema';
-import userService from '../services/userService';
+import { CreateUserInput, LoginUserInput } from "../schema/user.schema";
+import userService from "../services/userService";
 
 //exçuindo senhas em retornos de autenticação
 export const excludedFields = ["password"];
@@ -36,8 +28,8 @@ const authController = {
     req: Request<{}, {}, CreateUserInput>,
     res: Response,
     next: NextFunction
-  )  => {
-    console.log("teste aquui")
+  ) => {
+    console.log("teste aquui");
     const { email, password, role } = req.body;
 
     try {
@@ -88,7 +80,7 @@ const authController = {
           message: "Email ou senha inválidos",
         });
       }
-
+      console.log(user);
       //se existe vamos usar o servico de usuario para criar um token
       const { access_token } = await userService.signToken(user);
 
