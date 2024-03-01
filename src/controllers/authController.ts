@@ -19,6 +19,7 @@ const accesTokenCookieOptions: CookieOptions = {
 //configuração do token para ambiente de produção
 if (process.env.state !== "dev") {
   accesTokenCookieOptions.secure = true;
+  accesTokenCookieOptions.sameSite = "none"; // Adicione esta linha
 }
 
 //controller de Autênticação
